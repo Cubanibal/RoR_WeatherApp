@@ -1,0 +1,41 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Indicativo</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Provincia</th>
+      <th scope="col">Altitud</th>
+      <th scope="col">Latitud</th>
+      <th scope="col">Longitud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @valores2.each do |clave, valor| %>
+    <tr>
+      <th scope="row"><%= clave["indicativo"] %></th>
+      <td><%= clave["nombre"] %></td>
+      <td><%= clave["provincia"] %></td>
+      <td><%= clave["altitud"] %></td>
+      <td><%= clave["latitud"] %></td>
+      <td><%= clave["longitud"] %></td>
+
+     
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<div class="card text-center">
+  <div class="card-header">
+    <h1>Página principal</h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
