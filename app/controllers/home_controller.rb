@@ -41,4 +41,16 @@ class HomeController < ApplicationController
     @response2 = Net::HTTP.get(@uri_tiempo)
     @valores2 = JSON.parse(@response2)
     end
+  
+  def municipios
+    require 'net/http'
+    require 'json'
+
+    @url_municipios = URI("https://opendata.aemet.es/opendata/api/maestro/municipios/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdWJhbmliYWxAaG90bWFpbC5jb20iLCJqdGkiOiIyYTdkNWE1YS00YTM0LTRkYjEtOWUyMS1hZTBmMTZmMGM1ZjciLCJpc3MiOiJBRU1FVCIsImlhdCI6MTYyNjE5MTgyOSwidXNlcklkIjoiMmE3ZDVhNWEtNGEzNC00ZGIxLTllMjEtYWUwZjE2ZjBjNWY3Iiwicm9sZSI6IiJ9.WuQ4ezid3wNtsOhdC8zGLG5rJPbAmowBVJuNrFeXL_8")
+    @uri_municipios = URI(@url_municipios)
+    @response_municipios = Net::HTTP.get(@uri_municipios)
+    @valores_municipios = JSON.parse(@response_municipios)
+    
+    end
+    
 end
