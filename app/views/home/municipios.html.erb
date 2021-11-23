@@ -1,0 +1,28 @@
+<% @valores_municipios %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Capital</th>
+      <th scope="col">Nº Habitantes</th>
+      <th scope="col">Latitud</th>
+      <th scope="col">Longitud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @valores_municipios.each do |clave, valor| %>
+    <tr>
+      <th scope="row"><%= clave["id"] %></th>
+      <td><%= clave["nombre"] %></td>
+      <td><%= clave["capital"] %></td>
+      <td><%= clave["num_hab"] %></td>
+      <td><%= clave["latitud_dec"] %></td>
+      <td><%= clave["longitud_dec"] %></td>
+
+     
+    </tr>
+    <% end %>
+  </tbody>
+</table>
