@@ -1,20 +1,21 @@
-<%= @valores2_estacion %>
-<% @valores2_estacion.each do |clave, valor| %>
-<div class="card text-center">
-  <div class="card-header">
-  	
+<% if @idema %>
+	<% @valores2_estacion.each do |clave, valor| %>
+	<div class="card text-center">
+	  <div class="card-header">
+	  	
 
-	    <h1><%= clave["ubi"] %>- <%= clave["idema"] %></h1>
+		    <h1><%= clave["ubi"] %>- <%= clave["idema"] %></h1>
 
-	  </div>
-	  <div class="card-body">
-	    <h5 class="card-title"><%= clave["fint"] %></h5>
-	    Velocidad Viento :<%= clave["vv"] %> <br/>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"><%= clave["fint"] %></h5>
+		    Velocidad Viento :<%= clave["vv"] %> <br/>
 
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	  </div>
-	  <div class="card-footer text-muted">
-	    2 days ago
-	  </div>
-  <% end %>
+		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		  </div>
+		  <div class="card-footer text-muted">
+		    2 days ago
+		  </div>
+	  <% end %>
 </div>
+<% end %>

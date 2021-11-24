@@ -1,3 +1,27 @@
+<% @valor_todas %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Idema</th>
+      <th scope="col">Ubicación</th>
+      <th scope="col">Prec</th>
+      <th scope="col">Ta</th>
+      <th scope="col">Latitud</th>
+      <th scope="col">Longitud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @valor_todas.each do |clave, valor| %>
+    <tr>
+      <th scope="row"><%= clave["idema"] %></th>
+      <td><%= clave["ubi"] %></td>
+      <td><%= clave["prec"] %></td>
+      <td><%= clave["ta"] %></td>
+      <td><%= clave["lat"] %></td>
+      <td><%= clave["lon"] %></td>
 
-
-<%= @response2_ozono %>
+     
+    </tr>
+    <% end %>
+  </tbody>
+</table>

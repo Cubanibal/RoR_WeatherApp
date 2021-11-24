@@ -4,28 +4,37 @@ class HomeController < ApplicationController
     require 'net/http'
     require 'json'
 
-    @url_ozono = URI("https://opendata.aemet.es/opendata/api/red/especial/ozono/?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdWJhbmliYWxAaG90bWFpbC5jb20iLCJqdGkiOiIyYTdkNWE1YS00YTM0LTRkYjEtOWUyMS1hZTBmMTZmMGM1ZjciLCJpc3MiOiJBRU1FVCIsImlhdCI6MTYyNjE5MTgyOSwidXNlcklkIjoiMmE3ZDVhNWEtNGEzNC00ZGIxLTllMjEtYWUwZjE2ZjBjNWY3Iiwicm9sZSI6IiJ9.WuQ4ezid3wNtsOhdC8zGLG5rJPbAmowBVJuNrFeXL_8")
-    @uri_ozono = URI(@url_ozono)
-    @response_ozono = Net::HTTP.get(@uri_ozono)
-    @valores_ozono = JSON.parse(@response_ozono)
-    @ozono = @valores_ozono["datos"]
-    @uri2_ozono = URI(@ozono)
-    @response2_ozono = Net::HTTP.get(@uri2_ozono)
-    #@valor_ozono = JSON.parse(@response2_ozono)
+    @url_oc = URI("https://opendata.aemet.es/opendata/api/observacion/convencional/todas?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdWJhbmliYWxAaG90bWFpbC5jb20iLCJqdGkiOiIyYTdkNWE1YS00YTM0LTRkYjEtOWUyMS1hZTBmMTZmMGM1ZjciLCJpc3MiOiJBRU1FVCIsImlhdCI6MTYyNjE5MTgyOSwidXNlcklkIjoiMmE3ZDVhNWEtNGEzNC00ZGIxLTllMjEtYWUwZjE2ZjBjNWY3Iiwicm9sZSI6IiJ9.WuQ4ezid3wNtsOhdC8zGLG5rJPbAmowBVJuNrFeXL_8")
+    @uri_oc = URI(@url_oc)
+    @response_oc = Net::HTTP.get(@uri_oc)
+    @valores_oc = JSON.parse(@response_oc)
+    @todas = @valores_oc["datos"]
+    @uri2_todas = URI(@todas)
+    @response2_todas = Net::HTTP.get(@uri2_todas)
+    @valor_todas = JSON.parse(@response2_todas)
+
+    
+
+
+
   end
   
   def estacion
-    require 'net/http'
-    require 'json'
+    @idema = params['miform']
+    if @idema
+      require 'net/http'
+      require 'json'
 
-    @url_estacion = URI("https://opendata.aemet.es/opendata/api/observacion/convencional/datos/estacion/3260B?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdWJhbmliYWxAaG90bWFpbC5jb20iLCJqdGkiOiIyYTdkNWE1YS00YTM0LTRkYjEtOWUyMS1hZTBmMTZmMGM1ZjciLCJpc3MiOiJBRU1FVCIsImlhdCI6MTYyNjE5MTgyOSwidXNlcklkIjoiMmE3ZDVhNWEtNGEzNC00ZGIxLTllMjEtYWUwZjE2ZjBjNWY3Iiwicm9sZSI6IiJ9.WuQ4ezid3wNtsOhdC8zGLG5rJPbAmowBVJuNrFeXL_8")
-    @uri_estacion = URI(@url_estacion)
-    @response_estacion = Net::HTTP.get(@uri_estacion)
-    @valores_estacion = JSON.parse(@response_estacion)
-    @tiempo_estacion = @valores_estacion["datos"]
-    @uri_tiempo_estacion = URI(@tiempo_estacion)
-    @response2_estacion = Net::HTTP.get(@uri_tiempo_estacion)
-    @valores2_estacion = JSON.parse(@response2_estacion)
+      @url_estacion = URI("https://opendata.aemet.es/opendata/api/observacion/convencional/datos/estacion/"+@idema+"?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdWJhbmliYWxAaG90bWFpbC5jb20iLCJqdGkiOiIyYTdkNWE1YS00YTM0LTRkYjEtOWUyMS1hZTBmMTZmMGM1ZjciLCJpc3MiOiJBRU1FVCIsImlhdCI6MTYyNjE5MTgyOSwidXNlcklkIjoiMmE3ZDVhNWEtNGEzNC00ZGIxLTllMjEtYWUwZjE2ZjBjNWY3Iiwicm9sZSI6IiJ9.WuQ4ezid3wNtsOhdC8zGLG5rJPbAmowBVJuNrFeXL_8")
+      @uri_estacion = URI(@url_estacion)
+      @response_estacion = Net::HTTP.get(@uri_estacion)
+      @valores_estacion = JSON.parse(@response_estacion)
+      @tiempo_estacion = @valores_estacion["datos"]
+      @uri_tiempo_estacion = URI(@tiempo_estacion)
+      @response2_estacion = Net::HTTP.get(@uri_tiempo_estacion)
+      @valores2_estacion = JSON.parse(@response2_estacion)
+    end
+
   end
 
   def estaciones
