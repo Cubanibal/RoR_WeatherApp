@@ -21,7 +21,7 @@ class HomeController < ApplicationController
   
   def estacion
     @idema = params['miform']
-    if @idema
+    if @idema && @idema !=''
       require 'net/http'
       require 'json'
 
@@ -30,9 +30,13 @@ class HomeController < ApplicationController
       @response_estacion = Net::HTTP.get(@uri_estacion)
       @valores_estacion = JSON.parse(@response_estacion)
       @tiempo_estacion = @valores_estacion["datos"]
-      @uri_tiempo_estacion = URI(@tiempo_estacion)
-      @response2_estacion = Net::HTTP.get(@uri_tiempo_estacion)
-      @valores2_estacion = JSON.parse(@response2_estacion)
+      if !@tiempo_estacion
+      else
+        @uri_tiempo_estacion = URI(@tiempo_estacion)
+        @response2_estacion = Net::HTTP.get(@uri_tiempo_estacion)
+        @valores2_estacion = JSON.parse(@response2_estacion)
+        @valores2_estacion= @valores2_estacion
+      end
     end
 
   end

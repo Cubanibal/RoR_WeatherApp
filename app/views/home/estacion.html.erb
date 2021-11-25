@@ -1,21 +1,53 @@
+<%= @valores2_estacion %>
+
 <% if @idema %>
-	<% @valores2_estacion.each do |clave, valor| %>
-	<div class="card text-center">
-	  <div class="card-header">
-	  	
+	<% if @valores2_estacion %>
 
-		    <h1><%= clave["ubi"] %>- <%= clave["idema"] %></h1>
+		<% @valores2_estacion.each do |clave, valor| %>
+		<div class="card text-center">
+		  <div class="card-header">
+		  	
 
-		  </div>
-		  <div class="card-body">
-		    <h5 class="card-title"><%= clave["fint"] %></h5>
-		    Velocidad Viento :<%= clave["vv"] %> <br/>
+ <h1><%= clave["ubi"] %>- <%= clave["idema"] %></h1>
 
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
-		  </div>
-		  <div class="card-footer text-muted">
-		    2 days ago
-		  </div>
-	  <% end %>
+			  </div>
+			  <div class="card-body">
+
+	<table class="table">
+	  <thead>
+	    <tr>
+	      
+	      <th scope="col">Fecha Intervalo</th>
+	      <th scope="col">PREC</th>
+	      <th scope="col">TA</th>
+	      <th scope="col">VV</th>
+	      <th scope="col">TPR</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @valores2_estacion.each do |clave, valor| %>
+	    <tr>
+	      <th scope="row"><%= clave["fint"] %></th>
+	      
+	      <td><%= clave["prec"] %></td>
+	      <td><%= clave["ta"] %></td>
+	      <td><%= clave["vv"] %></td>
+	      <td><%= clave["tpr"] %></td>
+	      
+	      
+	     
+	    </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+
+			  </div>
+			  <div class="card-footer text-muted">
+			    Ubicación: <%= clave["ubi"] %> Latitud : <%= clave["lat"] %> Longitud :<%= clave["lon"] %>
+
+			  </div>
+		  <% end %>
+		<% end %>
 </div>
 <% end %>
